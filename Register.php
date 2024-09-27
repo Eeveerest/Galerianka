@@ -105,10 +105,10 @@
                 <input type="text" class="form-control input1" id="City" placeholder="City">
               </div>
               <div class="input-group form-group">
-                <input type="nuber" class="form-control input1" id="Postcode" placeholder="Postcode">
+                <input type="number" class="form-control input1" id="Postcode" placeholder="Postcode">
               </div>
               <div class="input-group form-group">
-                <input type="nuber" class="form-control input1" id="HouseNumber" placeholder="House number">
+                <input type="number" class="form-control input1" id="HouseNumber" placeholder="House number">
               </div>
               <div class="input-group form-group">
                 <input type="password" class="form-control input1" placeholder="Password">
