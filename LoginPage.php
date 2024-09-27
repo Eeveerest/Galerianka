@@ -1,3 +1,4 @@
+<?php require_once 'database.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -63,12 +64,6 @@
     <!--Separator-->
     <nav class="navbar navbar-expand blue-border d-none d-md-block">
       <div class="container-fluid">
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">
-              <img src="Pictures\SearchIcon.png" alt="User" width="25" height="25">
-            </button>
-          </form>
         <div class="collapse navbar-collapse" id="navbarSupportedContent2">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
@@ -92,12 +87,12 @@
             
           </div>
           <div class="card-body">
-            <form>
+            <form id="loginform" action="Login.php" method="post">
               <div class="input-group form-group">
-                <input type="text" class="form-control input1" placeholder="Username">
+                <input type="text" class="form-control input1" id="Username" placeholder="Username">
               </div>
               <div class="input-group form-group">
-                <input type="password" class="form-control input1" style="margin-bottom: 25px;" placeholder="Password">
+                <input type="password" class="form-control input1" id="Password" style="margin-bottom: 25px;" placeholder="Password">
               </div>
               <div class="row align-items-center remember">
                 <input type="checkbox">Remember Me
