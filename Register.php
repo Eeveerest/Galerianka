@@ -48,7 +48,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="LogIn.html">
+              <a class="navbar-brand menu-icon" href="Login.php">
                 <span><i class="fa-solid fa-user" alt="User"></i></span>
               </a>
             </li>
@@ -88,7 +88,7 @@
           </div>
           <div class="card-body">
             <!-- Register form -->
-            <form action="" id="formRegister" method="post">
+            <form action="RegisterValid.php" id="formRegister" method="post">
               <div class="input-group form-group">
                 <input type="text" class="form-control input1" id="Username" placeholder="Username">
               </div>
