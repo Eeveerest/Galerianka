@@ -48,7 +48,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="LogIn.html">
+              <a class="navbar-brand menu-icon" href="Login.php">
                 <span><i class="fa-solid fa-user" alt="User"></i></span>
               </a>
             </li>
@@ -87,7 +87,7 @@
             
           </div>
           <div class="card-body">
-            <form id="loginform" action="Login.php" method="post">
+            <form id="loginform" action="LoginValid.php" method="post">
               <div class="input-group form-group">
                 <input type="text" class="form-control input1" id="Username" placeholder="Username">
               </div>
@@ -109,7 +109,7 @@
           </div>
           <div class="card-footer">
             <div class="d-flex justify-content-center links">
-              Don't have an account?<a href="Register.html">Sign Up</a>
+              Don't have an account?<a href="Register.php">Sign Up</a>
             </div>
             <div class="links2 d-flex justify-content-center">
               <a href="ResetPswd.html">Forgot your password?</a>
