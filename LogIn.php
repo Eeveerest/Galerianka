@@ -25,7 +25,7 @@ require_once 'database.php';
     <!--menu-->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(23, 23, 23, 0.6)">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html" center>
+        <a class="navbar-brand" href="index.php" center>
           <img
             src="https://img.freepik.com/premium-zdjecie/kapibara-hydrochoerus-hydrochaeris-najwiekszy-zywy-gryzon-na-swiecie_45756-348.jpg?w=740"
             alt="" width="70" height="54">Galerianka</a>
@@ -36,10 +36,10 @@ require_once 'database.php';
         <div class="collapse navbar-collapse text-center" id="navbarSupportedContent1">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="Fundations.html">Fundations</a>
+              <a class="nav-link" aria-current="page" href="Fundations.php">Fundations</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link menu1 dropdown-toggle" id="Dropdown1" role="button" data-bs-toggle="dropdown"
@@ -47,9 +47,9 @@ require_once 'database.php';
                 <b>Shop</b>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="Dropdown1">
-                <li><a class="dropdown-item" href="Hunting.html">Hunting</a></li>
-                <li><a class="dropdown-item" href="Tactical.html">Tactical</a></li>
-                <li><a class="dropdown-item" href="BigKnives.html">Big Knives</a></li>
+                <li><a class="dropdown-item" href="Hunting.php">Hunting</a></li>
+                <li><a class="dropdown-item" href="Tactical.php">Tactical</a></li>
+                <li><a class="dropdown-item" href="BigKnives.php">Big Knives</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -58,7 +58,7 @@ require_once 'database.php';
               </a>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="BasketPge.html">
+              <a class="navbar-brand menu-icon" href="BasketPge.php">
                 <span><i class="fa-solid fa-basket-shopping" alt="Basket"></i></span>
               </a>
             </li>
@@ -72,13 +72,13 @@ require_once 'database.php';
         <div class="collapse navbar-collapse" id="navbarSupportedContent2">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="Tactical.html">Tactical</a>
+              <a class="nav-link active link-border" aria-current="page" href="Tactical.php">Tactical</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="Hunting.html">Hunting</a>
+              <a class="nav-link active link-border" aria-current="page" href="Hunting.php">Hunting</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="BigKnives.html">Big Knives</a>
+              <a class="nav-link active link-border" aria-current="page" href="BigKnives.php">Big Knives</a>
             </li>
           </ul>
       </div>
@@ -112,7 +112,7 @@ require_once 'database.php';
               Don't have an account?<a href="Register.php">Sign Up</a>
             </div>
             <div class="links2 d-flex justify-content-center">
-              <a href="ResetPswd.html">Forgot your password?</a>
+              <a href="ResetPswd.php">Forgot your password?</a>
             </div>
           </div>
         </div>
