@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'database.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -47,7 +51,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="LogIn.html">
+              <a class="navbar-brand menu-icon" href="Login.php">
                 <span><i class="fa-solid fa-user" alt="User"></i></span>
               </a>
             </li>
