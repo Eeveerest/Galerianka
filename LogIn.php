@@ -53,7 +53,7 @@ require_once 'database.php';
               </ul>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="Login.php">
+              <a class="navbar-brand menu-icon" href="LogIn.php">
                 <span><i class="fa-solid fa-user" alt="User"></i></span>
               </a>
             </li>
