@@ -23,6 +23,7 @@ require_once 'database.php';
             
             $_SESSION['user_type'] = "user";
             $hash = md5(sha1($_POST["Password"]));
+            
 
                 if ($hash === $password) {
                   if($acc_type=="admin"){
@@ -35,15 +36,16 @@ require_once 'database.php';
 
                   
                   echo 'Zalogowano';
+                  
 
                 }
                 else{
                   echo "password";
-                } 
+                }
               
             }
           else{
-            echo "username"; 
+            echo "username";
           }
         }
         
