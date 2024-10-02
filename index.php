@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'database.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +33,7 @@ To do list:
     <!--menu-->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(23, 23, 23, 0.6)">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html" center>
+        <a class="navbar-brand" href="index.php" center>
           <img
             src="https://img.freepik.com/premium-zdjecie/kapibara-hydrochoerus-hydrochaeris-najwiekszy-zywy-gryzon-na-swiecie_45756-348.jpg?w=740"
             alt="" width="70" height="54">Galerianka</a>
@@ -40,10 +44,10 @@ To do list:
         <div class="collapse navbar-collapse text-center" id="navbarSupportedContent1">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="Fundations.html">Fundations</a>
+              <a class="nav-link" aria-current="page" href="Fundations.php">Fundations</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link menu1 dropdown-toggle" id="Dropdown1" role="button" data-bs-toggle="dropdown"
@@ -51,18 +55,18 @@ To do list:
                 <b>Shop</b>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="Dropdown1">
-                <li><a class="dropdown-item" href="Hunting.html">Hunting</a></li>
-                <li><a class="dropdown-item" href="Tactical.html">Tactical</a></li>
-                <li><a class="dropdown-item" href="BigKnives.html">Big Knives</a></li>
+                <li><a class="dropdown-item" href="Hunting.php">Hunting</a></li>
+                <li><a class="dropdown-item" href="Tactical.php">Tactical</a></li>
+                <li><a class="dropdown-item" href="BigKnives.php">Big Knives</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="LogIn.html">
+              <a class="navbar-brand menu-icon" href="LogIn.php">
                 <span><i class="fa-solid fa-user" alt="User"></i></span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="BasketPge.html">
+              <a class="navbar-brand menu-icon" href="BasketPge.php">
                 <span><i class="fa-solid fa-basket-shopping alt="Basket"></i></span>
               </a>
             </li>
@@ -82,13 +86,13 @@ To do list:
         <div class="collapse navbar-collapse" id="navbarSupportedContent2">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="Tactical.html">Tactical</a>
+              <a class="nav-link active link-border" aria-current="page" href="Tactical.php">Tactical</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="Hunting.html">Hunting</a>
+              <a class="nav-link active link-border" aria-current="page" href="Hunting.php">Hunting</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="BigKnives.html">Big Knives</a>
+              <a class="nav-link active link-border" aria-current="page" href="BigKnives.php">Big Knives</a>
             </li>
           </ul>
       </div>
@@ -111,7 +115,7 @@ To do list:
               <div class="carousel-item active">
                   <img src="Pictures\Rainforest1.jpg" class="d-block w-100" alt="Rainforest1" height="700rem">
                   <div class="carousel-caption caption1">
-                      <a href="Fundations.html">
+                      <a href="Fundations.php">
                           <p class="sizelg">Support with us!</p>
                           <p class="sizesm">Check out the fundations we work with</p>
                       </a>
@@ -120,7 +124,7 @@ To do list:
               <div class="carousel-item">
                   <img src="Pictures\Rainforest2.webp" class="d-block w-100" alt="Rainforest2" height="700rem">
                   <div class="carousel-caption caption1">
-                      <a href="Fundations.html">
+                      <a href="Fundations.php">
                           <p class="sizelg">Support with us!</p>
                           <p class="sizesm">Check out the fundations we work with</p>
                       </a>
@@ -129,7 +133,7 @@ To do list:
               <div class="carousel-item">
                   <img src="Pictures\Rainforest5.jpg" class="d-block w-100" alt="Rainforest3" height="700rem">
                   <div class="carousel-caption caption2">
-                      <a href="Fundations.html">
+                      <a href="Fundations.php">
                           <p class="sizelg">Support with us!</p>
                           <p class="sizesm">Check out the fundations we work with</p>
                       </a>
@@ -169,13 +173,13 @@ To do list:
                 <div class="col-md-3 ">
                   <div class="thumb-wrapper">
                       <div class="img-box picture-border">
-                        <a href="Product1.html">
+                        <a href="Product1.php">
                           <img src="Pictures/Knife1.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                       </div>
                   </div>
                   <div class="thumb-content name-border text-center">
-                      <a href="Product1.html">
+                      <a href="Product1.php">
                         <h4 >Sony Headphone</h4></a>
                     <p class="item-price"><b>$23.99</b></p>
                     <a href="#" class="btn btn-success">Add to Cart</a>
@@ -189,12 +193,12 @@ To do list:
               <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product2.html">
+                        <a href="Product2.php">
                           <img src="Pictures/Knife2.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                       </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product2.html">
+                      <a href="Product2.php">
                       <h4>Samsung Galaxy S8</h4></a>
                       <p class="item-price"><b>$569.99</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -209,12 +213,12 @@ To do list:
               <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product3.html">
+                        <a href="Product3.php">
                           <img src="Pictures/Knife3.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                     </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product3.html">
+                      <a href="Product3.php">
                       <h4>Nikon DSLR</h4></a>
                       <p class="item-price"><b>$250.00</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -229,13 +233,13 @@ To do list:
               <div class="col-md-3 ">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                      <a href="Product1.html">
+                      <a href="Product1.php">
                         <img src="Pictures/Knife1.jpg" class="img-fluid rounded-img" alt="Headphone">
                       </a>
                     </div>
                 </div>
                 <div class="thumb-content name-border text-center">
-                  <a href="Product1.html">
+                  <a href="Product1.php">
                     <h4 >Sony Headphone</h4></a>
                   <p class="item-price"><b>$23.99</b></p>
                   <a href="#" class="btn btn-success">Add to Cart</a>
@@ -249,13 +253,13 @@ To do list:
               <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product2.html">
+                        <a href="Product2.php">
                           <img src="Pictures/Knife2.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                     </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product2.html">
-                      <a href="Product2.html">
+                      <a href="Product2.php">
+                      <a href="Product2.php">
                       <h4>Samsung Galaxy S8</h4></a></a>
                       <p class="item-price"><b>$569.99</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -267,13 +271,13 @@ To do list:
               <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product3.html">
+                        <a href="Product3.php">
                           <img src="Pictures/Knife3.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                     </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product3.html">
-                      <a href="Product3.html">
+                      <a href="Product3.php">
+                      <a href="Product3.php">
                       <h4>Nikon DSLR</h4></a></a>
                       <p class="item-price"><b>$250.00</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -288,13 +292,13 @@ To do list:
               <div class="col-md-3 ">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                      <a href="Product1.html">
+                      <a href="Product1.php">
                         <img src="Pictures/Knife1.jpg" class="img-fluid rounded-img" alt="Headphone">
                       </a>
                     </div>
                 </div>
                 <div class="thumb-content name-border text-center">
-                  <a href="Product1.html">
+                  <a href="Product1.php">
                     <h4 >Sony Headphone</h4></a>
                   <p class="item-price"><b>$23.99</b></p>
                   <a href="#" class="btn btn-success">Add to Cart</a>
@@ -308,12 +312,12 @@ To do list:
                <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product2.html">
+                        <a href="Product2.php">
                           <img src="Pictures/Knife2.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                     </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product2.html">
+                      <a href="Product2.php">
                       <h4>Samsung Galaxy S8</h4></a>
                       <p class="item-price"><b>$569.99</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -361,13 +365,13 @@ To do list:
                 <div class="col-md-3 ">
                   <div class="thumb-wrapper">
                       <div class="img-box picture-border">
-                        <a href="Product1.html">
+                        <a href="Product1.php">
                           <img src="Pictures/Knife1.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                       </div>
                   </div>
                   <div class="thumb-content name-border text-center">
-                    <a href="Product1.html">
+                    <a href="Product1.php">
                     <h4 >Sony Headphone</h4></a>
                     <p class="item-price"><b>$23.99</b></p>
                     <a href="#" class="btn btn-success">Add to Cart</a>
@@ -381,12 +385,12 @@ To do list:
               <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product2.html">
+                        <a href="Product2.php">
                           <img src="Pictures/Knife2.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                       </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product2.html">
+                      <a href="Product2.php">
                       <h4>Samsung Galaxy S8</h4></a>
                       <p class="item-price"><b>$569.99</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -401,12 +405,12 @@ To do list:
               <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product3.html">
+                        <a href="Product3.php">
                           <img src="Pictures/Knife3.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                     </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product3.html">
+                      <a href="Product3.php">
                       <h4>Nikon DSLR</h4></a>
                       <p class="item-price"><b>$250.00</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -421,13 +425,13 @@ To do list:
               <div class="col-md-3 ">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                      <a href="Product1.html">
+                      <a href="Product1.php">
                         <img src="Pictures/Knife1.jpg" class="img-fluid rounded-img" alt="Headphone">
                       </a>
                     </div>
                 </div>
                 <div class="thumb-content name-border text-center">
-                  <a href="Product1.html">
+                  <a href="Product1.php">
                     <h4 >Sony Headphone</h4></a>
                   <p class="item-price"><b>$23.99</b></p>
                   <a href="#" class="btn btn-success">Add to Cart</a>
@@ -441,12 +445,12 @@ To do list:
               <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product2.html">
+                        <a href="Product2.php">
                           <img src="Pictures/Knife2.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                     </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product2.html">
+                      <a href="Product2.php">
                       <h4>Samsung Galaxy S8</h4></a>
                       <p class="item-price"><b>$569.99</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -458,12 +462,12 @@ To do list:
               <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product3.html">
+                        <a href="Product3.php">
                           <img src="Pictures/Knife3.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                     </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product3.html">
+                      <a href="Product3.php">
                       <h4>Nikon DSLR</h4></a>
                       <p class="item-price"><b>$250.00</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -478,13 +482,13 @@ To do list:
               <div class="col-md-3 ">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                      <a href="Product1.html">
+                      <a href="Product1.php">
                         <img src="Pictures/Knife1.jpg" class="img-fluid rounded-img" alt="Headphone">
                       </a>
                     </div>
                 </div>
                 <div class="thumb-content name-border text-center">
-                  <a href="Product1.html">
+                  <a href="Product1.php">
                     <h4 >Sony Headphone</h4></a>
                   <p class="item-price"><b>$23.99</b></p>
                   <a href="#" class="btn btn-success">Add to Cart</a>
@@ -498,12 +502,12 @@ To do list:
                <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="thumb-wrapper">
                     <div class="img-box picture-border">
-                        <a href="Product2.html">
+                        <a href="Product2.php">
                           <img src="Pictures/Knife2.jpg" class="img-fluid rounded-img" alt="Headphone">
                         </a>
                     </div>
                     <div class="thumb-content name-border text-center">
-                      <a href="Product2.html">
+                      <a href="Product2.php">
                       <h4>Samsung Galaxy S8</h4></a>
                       <p class="item-price"><b>$569.99</b></p>
                       <a href="#" class="btn btn-success">Add to Cart</a>
@@ -532,7 +536,7 @@ To do list:
       <img src="Pictures\Generated1.jpg" class="d-none d-md-block w-100" alt="Rainforest3" height="700rem">
       <img src="Pictures\Generated2.jpg" class="d-xs-block d-md-none w-100" alt="Rainforest3" height="700rem">
       <div class="carousel-caption caption2">
-          <a href="Fundations.html">
+          <a href="Fundations.php">
               <p class="sizelg">Support with us!</p>
               <p class="sizesm">Check out the fundations we work with</p>
           </a>
@@ -599,11 +603,11 @@ To do list:
 <div class="col-md-3 ">
   <div class="thumb-wrapper">
       <div class="img-box picture-border">
-        <a href="Product1.html">
+        <a href="Product1.php">
           <img src="Pictures/Knive1.jpg" class="img-fluid rounded-img" alt="Headphone">
         </a>
     <div class="thumb-content name-border text-center">
-      <a href="Product1.html">
+      <a href="Product1.php">
                     <h4 >Sony Headphone</h4></a>
       <p class="item-price"><b>$23.99</b></p>
       <a href="#" class="btn btn-success">Add to Cart</a>
