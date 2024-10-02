@@ -1,4 +1,7 @@
-<?php require_once 'database.php'; ?>
+<?php
+session_start();
+require_once 'database.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -81,26 +84,27 @@
       </div>
     </nav>      
     <!--End Separator-->
-    <!-- Log in-->
-      <div class="col d-flex justify-content-center h-100">
+
+    <!-- Login -->
+        <div class="col d-flex justify-content-center h-100">
         <div class="card card1">
           <div class="card-header black-border text-center" style="border-radius: 20px;">
             <h3>Log In</h3>
             
           </div>
           <div class="card-body">
-                    <form action="" method="post" id="loginform">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="Login" placeholder="Login" value="">
-                            <span class="error" id="nameError"></span>
-                        </div>
-                        <div class="mb-3">
-                          <input type="text" class="form-control" id="Password" placeholder="Password" value="">
-                            <span class="error" id="surError"></span>
-                        </div>
-                         
-                        <input type="submit" class="btn float-right btn-success login" name="submit" id="submit" value="Login" >
-                     </form>     
+                    
+            <form id="loginform" method="post">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="Username" aria-describedby="UserHelp" placeholder="Login">
+                    <span class="error" id="UserError"></span>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="Password" placeholder="Password">
+                    <span class="error" id="passwordError"></span>
+                </div>
+                <input type="submit" class="btn float-right btn-success login" name="submit" id="submit" value="Zaloguj" />
+            </form>    
        
           </div>
           <div class="card-footer">
@@ -115,8 +119,25 @@
       </div>
 
   </div>
+        
+        
 
-  <footer>
+        
+       <!-- <div class="col-6 spacer" id="logedin" style="display: none">
+         <tbody id="roller">
+            <tr>
+                <td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>
+            </tr>
+         </tbody> -->
+        </div>
+       
+
+        </div>
+
+    </div>
+    </div>
+
+     <footer>
     <div class="container-fluid d-flex justify-content-between align-bottom" style="padding: .25rem; margin: .25rem;">
       <div class="col-xs-1 col-md-3 footer-icon">
         <hr style="width: 75%;">
@@ -159,15 +180,32 @@
       </div>
     </div>
   </footer>
+   
+    <?php
+    if(isset($_SESSION['user_id'])){
+       $ID=$_SESSION['user_id'];
+    $user = $pdo->prepare('SELECT * from reader WHERE ID='.$ID);
+    $user->execute();
+    list($ID,$imie,$nazwisko,$adr_zam,$nr_dok,$haslo) = $user->fetch( PDO::FETCH_NUM );
+    
+    if ($_SESSION['user_type']=="admin"){
+        echo "<script> var admin_log = 1;</script>";
+    }
+    echo "<script> var ID = ", $_SESSION['user_id'],";prev_loged();";
+    echo "document.getElementById('ID').value = ID;
+    document.getElementById('named').value ='",$imie,
+    "';document.getElementById('surname').value ='",$nazwisko,
+    "';document.getElementById('haddress').value ='",$adr_zam,
+    "';document.getElementById('doc').value ='",$nr_dok,
+    "';</script>";
+       
+}
+    
+?>
 
 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript" src="customjs.js"></script>
- 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="LoginJS.js"></script>
 </body>
-
-</html>
+</html>   
