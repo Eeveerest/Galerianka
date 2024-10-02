@@ -7,11 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Galerianka</title>
 
-  	<script src="https://kit.fontawesome.com/06d4f426f5.js" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/06d4f426f5.js" crossorigin="anonymous">
       </script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link href="./custom.css" rel="stylesheet">
+  <link href="custom.css" rel="stylesheet">
+  <script type="text/javascript" src="LoginJS.js"></script>
+  
 
 </head>
 
@@ -54,7 +56,7 @@
             </li>
             <li class="nav-item">
               <a class="navbar-brand menu-icon" href="BasketPge.html">
-                <span><i class="fa-solid fa-basket-shopping alt="Basket"></i></span>
+                <span><i class="fa-solid fa-basket-shopping" alt="Basket"></i></span>
               </a>
             </li>
           </ul>
@@ -87,25 +89,19 @@
             
           </div>
           <div class="card-body">
-            <form id="loginform" action="LoginValid.php" method="post">
-              <div class="input-group form-group">
-                <input type="text" class="form-control input1" id="Username" placeholder="Username">
-              </div>
-              <div class="input-group form-group">
-                <input type="password" class="form-control input1" id="Password" style="margin-bottom: 25px;" placeholder="Password">
-              </div>
-              <div class="row align-items-center remember">
-                <input type="checkbox">Remember Me
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Log in" class="btn float-right btn-success login">
-              </div>     
-            </form>
-            <div class="social_icon">
-                <span><i class="fa-brands fa-square-facebook"></i></span>
-                <span><i class="fa-brands fa-square-google-plus"></i></span>
-                <span><i class="fa-brands fa-square-twitter"></i></span>
-              </div>  
+                    <form action="" method="post" id="loginform">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="Login" placeholder="Login" value="">
+                            <span class="error" id="nameError"></span>
+                        </div>
+                        <div class="mb-3">
+                          <input type="text" class="form-control" id="Password" placeholder="Password" value="">
+                            <span class="error" id="surError"></span>
+                        </div>
+                         
+                        <input type="submit" class="btn float-right btn-success login" name="submit" id="submit" value="Login" >
+                     </form>     
+       
           </div>
           <div class="card-footer">
             <div class="d-flex justify-content-center links">
@@ -169,7 +165,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
-  <script src="customjs.js"></script>
+  <script type="text/javascript" src="customjs.js"></script>
+ 
 
 </body>
 
