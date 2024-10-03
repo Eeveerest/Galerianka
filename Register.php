@@ -85,7 +85,7 @@ require_once 'database.php';
     </nav>      
     <!--End Separator-->
 
-    <!-- Register-->
+        <!-- Register-->
       <div class="col d-flex justify-content-center h-100">
         <div class="card card1">
           <div class="card-header black-border text-center" style="border-radius: 20px;">
@@ -96,57 +96,59 @@ require_once 'database.php';
                     
                     <!-- Register form -->
             <form id="formRegister" method="post">
-              <div class="input-group form-group">
+             <div class="mb-3">
                 <input type="text" class="form-control input1" id="Username" placeholder="Username">
                 <span class="error" id="UserError"></span>
               </div>
               
-              <div class="input-group form-group">
+              <div class="mb-3">
                 <input type="email" class="form-control input1" id="Email" placeholder="Email">
                 <span class="error" id="EmailError"></span>
               </div>
               
-              <div class="input-group form-group">
+             <div class="mb-3">
                 <input type="text" class="form-control input1" id="FirstName" placeholder="First name">
                 <span class="error" id="FirstNameError"></span>
               </div>
               
-              <div class="input-group form-group">
+              <div class="mb-3">
                 <input type="text" class="form-control input1" id="LastName" placeholder="Last name">
                 <span class="error" id="LastNameError"></span>
               </div>
               
-              <div class="input-group form-group">
+             <div class="mb-3">
                 <input type="text" class="form-control input1" id="City" placeholder="City">
                 <span class="error" id="CityError"></span>
               </div>
               
-              <div class="input-group form-group">
+              <div class="mb-3">
                 <input type="number" class="form-control input1" id="Postcode" placeholder="Postcode">
                 <span class="error" id="PostcodeError"></span>
               </div>
               
-              <div class="input-group form-group">
+             <div class="mb-3">
                 <input type="number" class="form-control input1" id="HouseNumber" placeholder="House number">
                 <span class="error" id="HouseNumberError"></span>
               </div>
-              
-              <div class="input-group form-group">
-                <input type="password" class="form-control input1" placeholder="Password">
+           
+              <div class="mb-3">
+                <input type="password" class="form-control input1" id="Password" placeholder="Password">
                 <span class="error" id="PasswordError"></span>
               </div>
               
-              <div class="input-group form-group">
-                <input type="password" class="form-control input1" style="margin-bottom: 25px;" placeholder="Repeat password">
-                <span class="error" id="RepPasswordError"></span>
+              <div class="mb-3">
+                <input type="password" class="form-control input1" id="RepPassword"  placeholder="Repeat password">
+                <span class="error" style="margin-bottom: 25px;" id="RepPasswordError"></span>
               </div>
               
-              <div class="row align-items-center remember">
-                <input type="checkbox"> I have read and agreed with the Terms of use, Rules and the Privacy policy.
+              <div class="mb-3 row align-items-center remember">
+                <input type="checkbox" id="Rules"> I have read and agreed with the Terms of use, Rules and the Privacy policy.
+                <span class="error" style="margin-bottom: 25px;" id="RulesError"></span>
+                
               </div>
               
-              <div class="form-group">
-                <input type="submit" value="Create account" class="btn float-right btn-success register">
+              <div class="mb-3">
+                <input type="submit" class="btn float-right btn-success login" name="submit" id="submit" value="Register" />
               </div>     
             </form>
           </div>
@@ -224,12 +226,8 @@ require_once 'database.php';
    
 
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="RegisterJS.js"></script>
 </body>
-</html> 
-
-
-  
+</html>   
