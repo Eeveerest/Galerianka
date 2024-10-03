@@ -1,9 +1,9 @@
 <?php
 require_once 'database.php';
 
-    $good=1;
+    $ilosc=1;
             if (empty($_POST["Username"])) {
-                $good = 0;
+                $ilosc= 0;
                 echo "1";
             } else {
                 $Username = $_POST["Username"]; // add check if not already taken
@@ -50,20 +50,31 @@ require_once 'database.php';
             } else {
                 $Password = $_POST["Password"];      
               }
-          if (empty($_POST["RepPassword"]||$_POST["RepPassword"]!=$_POST["Password"])) { 
+          if (empty($_POST["RepPassword"])) {
                 $ilosc = 0;
                 echo "9";         
             } else {
+              if ($_POST["RepPassword"]!=$_POST["Password"]){
+                $ilosc = 0;
+                echo "9";
+              }else{
                 $RepPassword = $_POST["RepPassword"];      
+                }
               }
-      // Remember to hash password later
+  if (!isset($_POST['Rules'])) {
+                $ilosc = 0;
+                echo "10";         
+            }
+      
       if($ilosc == 1)
       {
+        $_POST["Password"] = md5(sha1($_POST["Password"]));
+        
         $stmt = $pdo->prepare('INSERT INTO users (`login`, `name`, `surname`, `password`, `email`, `city`, `code`, `house`, `acc_type`)  VALUES(
             \''.$_POST['Username'].'\',
             \''.$_POST['FirstName'].'\',
             \''.$_POST['LastName'].'\',
-            \''.$_POST['Password'].'\', 
+            \''.$_POST['Password'].'\',
             \''.$_POST['Email'].'\',
             \''.$_POST['City'].'\',
             '.$_POST['Postcode'].',
