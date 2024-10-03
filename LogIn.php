@@ -1,7 +1,16 @@
 <?php
 session_start();
 require_once 'database.php';
-?>
+
+      if(isset($_SESSION['user_login'])){
+      if ($_SESSION['user_type']=="admin"){
+        echo "<script>window.location.href = '/AdminPanel.php';   </script>";
+      }else {
+        echo "<script>window.location.href = '/UserPanel.php';   </script>";
+      }
+       
+      }
+  ?>
 <!doctype html>
 <html lang="en">
 
@@ -82,6 +91,7 @@ require_once 'database.php';
             </li>
           </ul>
       </div>
+        </div>
     </nav>      
     <!--End Separator-->
 
@@ -103,7 +113,7 @@ require_once 'database.php';
                     <input type="password" class="form-control" id="Password" placeholder="Password">
                     <span class="error" id="passwordError"></span>
                 </div>
-                <input type="submit" class="btn float-right btn-success login" name="submit" id="submit" value="Zaloguj" />
+                <input type="submit" class="btn float-right btn-success login" name="submit" id="submit" value="Login" />
             </form>    
        
           </div>
@@ -129,13 +139,7 @@ require_once 'database.php';
                 <td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>
             </tr>
          </tbody> -->
-        </div>
-       
 
-        </div>
-
-    </div>
-    </div>
 
      <footer>
     <div class="container-fluid d-flex justify-content-between align-bottom" style="padding: .25rem; margin: .25rem;">
@@ -180,32 +184,12 @@ require_once 'database.php';
       </div>
     </div>
   </footer>
-   
-    <?php
-    if(isset($_SESSION['user_id'])){
-       $ID=$_SESSION['user_id'];
-    $user = $pdo->prepare('SELECT * from reader WHERE ID='.$ID);
-    $user->execute();
-    list($ID,$imie,$nazwisko,$adr_zam,$nr_dok,$haslo) = $user->fetch( PDO::FETCH_NUM );
-    
-    if ($_SESSION['user_type']=="admin"){
-        echo "<script> var admin_log = 1;</script>";
-    }
-    echo "<script> var ID = ", $_SESSION['user_id'],";prev_loged();";
-    echo "document.getElementById('ID').value = ID;
-    document.getElementById('named').value ='",$imie,
-    "';document.getElementById('surname').value ='",$nazwisko,
-    "';document.getElementById('haddress').value ='",$adr_zam,
-    "';document.getElementById('doc').value ='",$nr_dok,
-    "';</script>";
-       
-}
-    
-?>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="LoginJS.js"></script>
+
 </body>
 </html>   
