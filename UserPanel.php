@@ -14,7 +14,9 @@ require_once 'database.php';
       </script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link href="./custom.css" rel="stylesheet">
+  <link href="custom.css" rel="stylesheet">
+  <script type="text/javascript" src="UserPanelJS.js"></script>
+  
 
 </head>
 
@@ -51,7 +53,7 @@ require_once 'database.php';
               </ul>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="Login.php">
+              <a class="navbar-brand menu-icon" href="LogIn.php">
                 <span><i class="fa-solid fa-user" alt="User"></i></span>
               </a>
             </li>
@@ -79,15 +81,34 @@ require_once 'database.php';
               <a class="nav-link active link-border" aria-current="page" href="BigKnives.php">Big Knives</a>
             </li>
           </ul>
-          </div>
       </div>
+     </div>
     </nav>      
     <!--End Separator-->
 
+    <!-- Logout -->
+        <div class="col d-flex justify-content-center h-100">
+        <div class="card card1">
+          <div class="card-header black-border text-center" style="border-radius: 20px; margin-bottom: 0.5rem">
+            <h3>User Panel</h3>  
+          </div>
+          
+          <button class="btn btn-success"  id="log_out" style="margin-bottom: 1.5rem"><a id="log_out_ref">Logout</a></button>
+        </div>
+        </div>
+        
+        
 
-  </div>
+        
+       <!-- <div class="col-6 spacer" id="logedin" style="display: none">
+         <tbody id="roller">
+            <tr>
+                <td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>
+            </tr>
+         </tbody> -->
 
-  <footer>
+
+     <footer>
     <div class="container-fluid d-flex justify-content-between align-bottom" style="padding: .25rem; margin: .25rem;">
       <div class="col-xs-1 col-md-3 footer-icon">
         <hr style="width: 75%;">
@@ -133,11 +154,8 @@ require_once 'database.php';
 
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
-  <script src="customjs.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="UserPanelJS.js"></script>
 </body>
-
-</html>
+</html>   
