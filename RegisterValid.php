@@ -22,37 +22,37 @@ require_once 'database.php';
               }                      
             if (empty($_POST["LastName"])) {
                 $ilosc = 0;
-                echo "6";
+                echo "4";
             } else {
                 $LastName = $_POST["LastName"];
               }
             if (empty($_POST["City"])) {
                 $ilosc = 0;
-                echo "4";
+                echo "5";
             } else {
                 $City = $_POST["City"];
               }
             if (empty($_POST["Postcode"])) {
                 $ilosc = 0;
-                echo "5";         
+                echo "6";         
             } else {
                 $Postcode = $_POST["Postcode"];      
               }
           if (empty($_POST["HouseNumber"])) {
                 $ilosc = 0;
-                echo "6";         
+                echo "7";         
             } else {
                 $HouseNumber = $_POST["HouseNumber"];      
               }
           if (empty($_POST["Password"])) {
                 $ilosc = 0;
-                echo "7";         
+                echo "8";         
             } else {
                 $Password = $_POST["Password"];      
               }
           if (empty($_POST["RepPassword"]||$_POST["RepPassword"]!=$_POST["Password"])) { 
                 $ilosc = 0;
-                echo "8";         
+                echo "9";         
             } else {
                 $RepPassword = $_POST["RepPassword"];      
               }
