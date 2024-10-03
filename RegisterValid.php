@@ -77,7 +77,7 @@ require_once 'database.php';
             \''.$_POST['Password'].'\',
             \''.$_POST['Email'].'\',
             \''.$_POST['City'].'\',
-            '.$_POST['Postcode'].',
+            \''.$_POST['Postcode'].'\',
             '.$_POST['HouseNumber'].',
             "user")');
         $stmt->execute();
