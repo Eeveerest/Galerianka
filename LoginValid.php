@@ -29,14 +29,13 @@ require_once 'database.php';
                   if($acc_type=="admin"){
                     echo "admin";
                     $_SESSION['user_type'] = "admin";
+                    $_SESSION['user_login'] = $login;
                   }
+                  else {
                   
                   $_SESSION['user_login'] = $login;
-                  
-
-                  
                   echo 'Zalogowano';
-                  
+                  }
 
                 }
                 else{
