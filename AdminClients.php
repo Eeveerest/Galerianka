@@ -21,7 +21,7 @@ require_once 'database.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link href="custom.css" rel="stylesheet">
-  <script type="text/javascript" src="UserPanelJS.js"></script>
+  <script type="text/javascript" src="AdminClientsJS.js"></script>
   
 
 </head>
@@ -76,13 +76,7 @@ require_once 'database.php';
     <nav class="navbar navbar-expand blue-border d-none d-md-block">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="AdminCategories.php">Categories</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" data-bs-toggle="modal" data-bs-target="#productsModal">Add product</a>
-            </li>
+          <ul class="navbar-nav ms-auto">            
             <li class="nav-item">
               <a class="nav-link active link-border" aria-current="page" href="AdminPanel.php">Back</a>
             </li>
@@ -98,7 +92,7 @@ require_once 'database.php';
         <form action="" method="post" id="searchform">
         <div class="row my-5">
             <div class="col-md-4">
-                <input type="text" class="form-control" name="search" id="search" placeholder="ID or name" value=""/>
+                <input type="text" class="form-control" name="search" id="search" placeholder="Login or e-mail" value=""/>
             </div>
             <div class="col-md-8 text-left">
                 <input type="submit" class="btn btn-success" style="margin: 0; border-color: whitesmoke;" name="submit" value="Search" />
@@ -108,22 +102,21 @@ require_once 'database.php';
         <div class="row">
             <div class="col-12">
 
-            <h3>Products</h3>
+            <h3>Clients</h3>
                 <table class="table table1">
                     <thead>
                     <tr>
-                        <th class="th1">ID</th>
+                        <th class="th1">Login</th>
                         <th class="th1">Name</th>
-                        <th class="th1">Price</th>
-                        <th class="th1">Manufacturer</th>
-                        <th class="th1">Delivery</th>
+                        <th class="th1">Surname</th>
+                        <th class="th1">Email</th>
                         
-                      
+                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody id="productsData">
+                    <tbody id="clientsData">
                     <tr>
                         <td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>
                     </tr>
@@ -135,69 +128,14 @@ require_once 'database.php';
         </div>
     </div>
 
-   <!-- Modal add product -->
-<div class="modal fade" id="productsModal" tabindex="-1" aria-labelledby="productsModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="productsModalLabel">Add product</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="" method="post" id="addform">    
-        <div class="modal-body">
-       <div class="form-group">
-            <label for="InputName">Name*</label>
-            <input type="text" class="form-control" name="InputName" id="InputName" value="">
-            <span class="error" id="nameError"></span>
-        </div>   
-      <div class="form-group">
-            <label for="InputPrice">Price*</label>
-            <input type="number" class="form-control" step="0.01" name="InputPrice" id="InputPrice" value="">
-            <span class="error" id="priceError"></span>
-        </div> 
-        <div class="form-group">
-            <label for="InputMan">Manufacturer*</label>
-            <select class="form-control" id="InputMan" name="InputMan">
-                <option value=""></option>
-                        <?php  
-                         $publish = $pdo->query('SELECT id, name FROM manufacturers');
-                        foreach ($publish as $row) {
-                        echo '<option value="'.$row['id'].'">'.$row['name'].'</option>"';
-                            }
-                        ?>
-            </select>
-            <span class="error" id="manError"></span>
-        </div>
-        <div class="form-group">
-            <label for="InputDeliv">Delivery*</label>
-            <select class="form-control" id="InputDeliv" name="InputDeliv">
-                <option value=""></option>
-                        <?php  
-                         $publish = $pdo->query('SELECT id, name FROM delivery');
-                        foreach ($publish as $row) {
-                        echo '<option value="'.$row['id'].'">'.$row['name'].'</option>"';
-                            }
-                        ?>
-            </select>
-            <span class="error" id="delivError"></span>
-        </div>
-      </div>   
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-success" style="color: white" name="submit-zap" id="submit-zap" value="Add" />
-      </div>          
-    </form>
-    </div>
-  </div>
-</div>
-
+   
 
 <!-- Modal delete -->
 <div class="modal fade" id="deleteModal" name="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete product</h5>
+        <h5 class="modal-title" id="deleteModalLabel">Delete client</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="del.php" method="post" name="reserve">
@@ -220,27 +158,27 @@ require_once 'database.php';
     function Id(btn)
     {
         iden = btn.id;
-        text = "Are you sure you want to delete product with id  "+iden+"?";
+        text = "Are you sure you want to delete client with login  "+iden+"?";
         document.getElementById("bookdel").innerHTML = text;
     }
 
     function Del()
-        { 
-            let base = "delAdminProducts.php?id=";
+        {
+            let base = "delAdminClients.php?login=";
             let urldel = base + iden;
         $.ajax({
            url: urldel,
             method: 'POST'
         }).done(function() {
-            $("#deleteModal").modal('hide'); 
-            $('#productsData').html('<tr>\n' +
+            $("#deleteModal").modal('hide');
+            $('#clientsData').html('<tr>\n' +
           '<td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>\n' +
           '</tr>');
             $.ajax({
-                url: "getAdminProducts.php",
+                url: "getAdminClients.php",
                 method: 'POST'
             }).done(function( data ) {
-                $('#productsData').html(data);
+                $('#clientsData').html(data);
                 $('td').css( 'padding-bottom', "1rem" );
                 $('td').css( 'padding-top', "1rem" );
                 $('td').css( 'color', "whitesmoke" );
@@ -248,11 +186,11 @@ require_once 'database.php';
             });
         });
             }
-  </script> 
+  </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="AdminProductJS.js"></script>
+    <script type="text/javascript" src="AdminClientsJS.js"></script>
 </body>
 </html>   

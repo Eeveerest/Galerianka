@@ -6,8 +6,11 @@ require_once 'database.php';
     }
   else if ($_SESSION['user_type'] != "admin") {
     echo "<script>window.location.href = '/LogIn.php';   </script>";
+  
+  
   }
-?>
+
+  ?>
 <!doctype html>
 <html lang="en">
 
@@ -21,12 +24,14 @@ require_once 'database.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link href="custom.css" rel="stylesheet">
-  <script type="text/javascript" src="UserPanelJS.js"></script>
+  <script type="text/javascript" src="editAdminClientJS.js"></script>
+  
   
 
 </head>
 
 <body>
+
   <div class="main">
     <!--menu-->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(23, 23, 23, 0.6)">
@@ -77,48 +82,85 @@ require_once 'database.php';
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent2">
           <ul class="navbar-nav ms-auto">
-            
+            <li class="nav-item">
+              <a class="nav-link active link-border" aria-current="page" href="AdminClients.php">Back</a>
+            </li>
           </ul>
       </div>
      </div>
     </nav>      
     <!--End Separator-->
+    
+    <div class="container list">
+      <h3 id="login">Client</h3>
+           <form id="editform" method="post">              
+              <div class="mb-3 acc_data">
+                <input type="email" class="form-control input1" id="Email" placeholder="Email">
+                <span class="error" id="EmailError"></span>
+              </div>
+              
+             <div class="mb-3 acc_data">
+                <input type="text" class="form-control input1" id="FirstName" placeholder="First name">
+                <span class="error" id="FNameError"></span>
+              </div>
+              
+              <div class="mb-3 acc_data">
+                <input type="text" class="form-control input1" id="LastName" placeholder="Last name">
+                <span class="error" id="LNameError"></span>
+              </div>
+              
+             <div class="mb-3 acc_data">
+                <input type="text" class="form-control input1" id="City" placeholder="City">
+              </div>
+              
+              <div class="mb-3 acc_data">
+                <input type="text" class="form-control input1" id="Postcode" placeholder="Postcode">
+              </div>
+              
+             <div class="mb-3 acc_data">
+                <input type="number" class="form-control input1" id="House" placeholder="House number">
+              </div>
+              
+              <div class="mb-3 acc_data">
+                <input id="ClientID" type="hidden" value="<?php echo $_GET['id']; ?>" />
+                <input type="submit" class="btn float-right btn-success login" name="submit" id="submit" value="Edit" />
+              </div>     
+            </form>
 
-    <!-- Logout -->
-        <div class="col d-flex justify-content-center h-100">
-        <div class="card card1">
-          <div class="card-header black-border text-center" style="border-radius: 20px; margin-bottom: 0.5rem">
-            <h3>Admin Panel</h3>  
-          </div>
-          
-          <!-- Panel buttons -->
-          <button class="btn btn-success spacer panel-btn" id="product_btn"><a href="AdminProduct.php" id="product_manage">Produkty i kategorie</a></button> 
-          <button class="btn btn-success spacer panel-btn" id="client_btn"><a href="AdminClients.php"  id="client_manage">Klienci</a></button>
-          <button class="btn btn-success spacer panel-btn" id="order_btn"><a href="#"  id="order_manage">Zamówienia</a></button>
-          <button class="btn btn-success spacer panel-btn" id="shipping_btn"><a href="#"  id="shipping_manage">Dostawy</a></button>
-          <button class="btn btn-success spacer panel-btn" id="payment_btn"><a href="#"  id="payment_manage">Płatności</a></button>
-          <button class="btn btn-success spacer panel-btn" id="subpage_btn"><a href="#"  id="subpage_manage">Podstrony</a></button>
-          
-          <button class="btn btn-success "  id="log_out" style="margin-bottom: 1.5rem"><a id="log_out_ref">Logout</a></button>
-        </div>
-        </div>
-        </div>
+    </div>
+
+    <div class="container list">
+      <h3>Note</h3>
+      <textarea rows="4" style="width: 100%; border-radius: 0.5rem" name="comment" id="comment" form="noteform" placeholder="Enter note here..."> </textarea>
+      <form id="noteform" method="post">
         
+        <input type="submit" class="btn float-right btn-success login" name="submit-note" id="submit-note" value="Save" />
+      </form>
+    </div>
 
-        
-       <!-- <div class="col-6 spacer" id="logedin" style="display: none">
-         <tbody id="roller">
-            <tr>
-                <td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>
-            </tr>
-         </tbody> -->
-
-
-
+<?php
+    $user = $pdo->prepare('SELECT login, name, surname, email, city, code, house, notes from users WHERE login like "'.$_GET['id'].'"');
+    $user->execute();
+    list($login,$name,$surname,$email,$city,$code,$house,$notes) = $user->fetch( PDO::FETCH_NUM );
+    
+      echo " <script>
+      document.getElementById('login').innerHTML = 'Client ".$login."';
+      document.getElementById('FirstName').value ='".$name."';
+      document.getElementById('LastName').value ='".$surname."';
+      document.getElementById('Email').value ='".$email."';
+      document.getElementById('City').value ='".$city."';
+      document.getElementById('Postcode').value ='".$code."';
+      document.getElementById('House').value ='".$house."';
+      document.getElementById('comment').innerHTML ='".$notes."';  
+        </script>";
+  
+  ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="UserPanelJS.js"></script>
+    <script type="text/javascript" src="editAdminClientJS.js"></script>
+    
+    
 </body>
 </html>   

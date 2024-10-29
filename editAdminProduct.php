@@ -6,8 +6,17 @@ require_once 'database.php';
     }
   else if ($_SESSION['user_type'] != "admin") {
     echo "<script>window.location.href = '/LogIn.php';   </script>";
+  
+  
   }
-?>
+  $dataprod = $pdo -> query('SELECT * from products where id='.$_GET['id']);
+  $dataprod = $dataprod -> fetch();
+  $mandata = $pdo->query('SELECT name FROM manufacturers WHERE id = '.$dataprod['manufacturer_id']);
+  $mandata = $mandata -> fetch();
+  $delivdata = $pdo->query('SELECT name FROM delivery WHERE id = '.$dataprod['delivery_id']);
+  $delivdata = $delivdata -> fetch();
+
+  ?>
 <!doctype html>
 <html lang="en">
 
@@ -21,12 +30,14 @@ require_once 'database.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link href="custom.css" rel="stylesheet">
-  <script type="text/javascript" src="UserPanelJS.js"></script>
+  <script type="text/javascript" src="editAdminProductJS.js"></script>
+  
   
 
 </head>
 
 <body>
+
   <div class="main">
     <!--menu-->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(23, 23, 23, 0.6)">
@@ -77,48 +88,81 @@ require_once 'database.php';
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent2">
           <ul class="navbar-nav ms-auto">
-            
+            <li class="nav-item">
+              <a class="nav-link active link-border" aria-current="page" href="Tactical.php">Tactical</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active link-border" aria-current="page" href="Hunting.php">Hunting</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active link-border" aria-current="page" href="BigKnives.php">Big Knives</a>
+            </li>
           </ul>
       </div>
      </div>
     </nav>      
     <!--End Separator-->
-
-    <!-- Logout -->
-        <div class="col d-flex justify-content-center h-100">
-        <div class="card card1">
-          <div class="card-header black-border text-center" style="border-radius: 20px; margin-bottom: 0.5rem">
-            <h3>Admin Panel</h3>  
-          </div>
-          
-          <!-- Panel buttons -->
-          <button class="btn btn-success spacer panel-btn" id="product_btn"><a href="AdminProduct.php" id="product_manage">Produkty i kategorie</a></button> 
-          <button class="btn btn-success spacer panel-btn" id="client_btn"><a href="AdminClients.php"  id="client_manage">Klienci</a></button>
-          <button class="btn btn-success spacer panel-btn" id="order_btn"><a href="#"  id="order_manage">Zamówienia</a></button>
-          <button class="btn btn-success spacer panel-btn" id="shipping_btn"><a href="#"  id="shipping_manage">Dostawy</a></button>
-          <button class="btn btn-success spacer panel-btn" id="payment_btn"><a href="#"  id="payment_manage">Płatności</a></button>
-          <button class="btn btn-success spacer panel-btn" id="subpage_btn"><a href="#"  id="subpage_manage">Podstrony</a></button>
-          
-          <button class="btn btn-success "  id="log_out" style="margin-bottom: 1.5rem"><a id="log_out_ref">Logout</a></button>
+    
+    <div class="container list">
+      <h3>Product</h3>
+          <form action="" method="post" id="editform">    
+        <div class="modal-body">
+          <input typr="text" id="ProductId" value="<?php echo $_GET['id'];?>" style="visibility: hidden;">
+       <div class="form-group"> 
+            <label for="InputName">Name*</label>
+            <input type="text" class="form-control" name="InputName" id="InputName" value="<?php echo $dataprod['name']?>">
+            <span class="error" id="nameError"></span>
+        </div>   
+      <div class="form-group">
+            <label for="InputPrice">Price*</label>
+            <input type="number" class="form-control" step="0.01" name="InputPrice" id="InputPrice" value="<?php echo $dataprod['price']?>">
+            <span class="error" id="priceError"></span>
         </div>
+        <div class="form-group">
+            <label for="InputMan">Manufacturer*</label>
+            <select class="form-control" id="InputMan" name="InputMan">
+                <option value="<?php echo $dataprod['manufacturer_id']?>"><?php echo $mandata['name'];?> </option>
+                        <?php  
+                         $publish = $pdo->query('SELECT id, name FROM manufacturers');
+                        foreach ($publish as $row) {
+                        echo '<option value="'.$row['id'].'">'.$row['name'].'</option>"';
+                            }
+                        ?>
+            </select>
+            <span class="error" id="manError"></span>
         </div>
+        <div class="form-group">
+            <label for="InputDeliv">Delivery*</label>
+            <select class="form-control" id="InputDeliv" name="InputDeliv">
+                <option value="<?php echo $dataprod['delivery_id']?>"><?php echo $delivdata['name'];?></option>
+                        <?php  
+                         $publish = $pdo->query('SELECT id, name FROM delivery');
+                        foreach ($publish as $row) {
+                        echo '<option value="'.$row['id'].'">'.$row['name'].'</option>"';
+                            }
+                        ?>
+            </select>
+            <span class="error" id="delivError"></span>
         </div>
-        
+      </div>   
+    <div class="modal-footer">
+        <a href=AdminProduct.php><button type="button" class="btn btn-secondary" style="margin-top: 1rem; margin-right: 1rem;" data-bs-dismiss="modal">Close</button></a>
+        <input type="submit" class="btn btn-success btn-whitesmoke" style="color: white; margin-top: 1rem;" name="submit-edit" id="submit-edit" value="Edit" />
+      </div>          
+    </form>
+    </div>
 
-        
-       <!-- <div class="col-6 spacer" id="logedin" style="display: none">
-         <tbody id="roller">
-            <tr>
-                <td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>
-            </tr>
-         </tbody> -->
-
+    <div class="container list">
+      <h3>Parameters</h3>
+    </div>
 
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="UserPanelJS.js"></script>
+    <script type="text/javascript" src="editAdminProductJS.js"></script>
+    
+    
 </body>
 </html>   

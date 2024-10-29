@@ -21,7 +21,7 @@ require_once 'database.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link href="custom.css" rel="stylesheet">
-  <script type="text/javascript" src="UserPanelJS.js"></script>
+  <script type="text/javascript" src="AdminAsignedJS.js"></script>
   
 
 </head>
@@ -78,13 +78,10 @@ require_once 'database.php';
         <div class="collapse navbar-collapse" id="navbarSupportedContent2">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="AdminCategories.php">Categories</a>
+              <a class="nav-link active link-border" aria-current="page" data-bs-toggle="modal" data-bs-target="#categoryModal">Add category</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" data-bs-toggle="modal" data-bs-target="#productsModal">Add product</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="AdminPanel.php">Back</a>
+              <a class="nav-link active link-border" aria-current="page" href="AdminCategories.php">Back</a>
             </li>
           </ul>
       </div>
@@ -95,30 +92,20 @@ require_once 'database.php';
     
     <!-- Table and search-->
     <div class="container list">
-        <form action="" method="post" id="searchform">
-        <div class="row my-5">
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="search" id="search" placeholder="ID or name" value=""/>
-            </div>
-            <div class="col-md-8 text-left">
-                <input type="submit" class="btn btn-success" style="margin: 0; border-color: whitesmoke;" name="submit" value="Search" />
-            </div>
-        </div>
-        </form>
+        
         <div class="row">
             <div class="col-12">
 
-            <h3>Products</h3>
+            <h3>Assigned to <?php $name = $pdo->query('SELECT name FROM categories where id = '.$_GET['id']);foreach ($name as $row) echo $row['name']; ?></h3>
+              <button type="button" onclick="Id(this)" class="btn btn-success btn-whitesmoke del" data-bs-toggle="modal" data-bs-target="#addModal" id="Asign">Add products</button>   
+              <input id="iden" type="hidden" value="<?php echo $_GET['id']; ?>" /> 
                 <table class="table table1">
                     <thead>
                     <tr>
                         <th class="th1">ID</th>
                         <th class="th1">Name</th>
-                        <th class="th1">Price</th>
-                        <th class="th1">Manufacturer</th>
-                        <th class="th1">Delivery</th>
                         
-                      
+                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -135,52 +122,30 @@ require_once 'database.php';
         </div>
     </div>
 
-   <!-- Modal add product -->
-<div class="modal fade" id="productsModal" tabindex="-1" aria-labelledby="productsModalLabel" aria-hidden="true">
+
+     <!-- Modal add product -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="productsModalLabel">Add product</h3>
+        <h3 class="modal-title" id="addModalLabel">Add product to category</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="" method="post" id="addform">    
         <div class="modal-body">
        <div class="form-group">
-            <label for="InputName">Name*</label>
-            <input type="text" class="form-control" name="InputName" id="InputName" value="">
-            <span class="error" id="nameError"></span>
-        </div>   
-      <div class="form-group">
-            <label for="InputPrice">Price*</label>
-            <input type="number" class="form-control" step="0.01" name="InputPrice" id="InputPrice" value="">
-            <span class="error" id="priceError"></span>
-        </div> 
-        <div class="form-group">
-            <label for="InputMan">Manufacturer*</label>
-            <select class="form-control" id="InputMan" name="InputMan">
+            <label for="InputId">Product</label>
+            <select class="form-control" id="InputId" name="InputId">
                 <option value=""></option>
                         <?php  
-                         $publish = $pdo->query('SELECT id, name FROM manufacturers');
+                         $publish = $pdo->query('SELECT id, name FROM products where id not in (select product_id from products_categories where category_id = '.$_GET['id'].')');
                         foreach ($publish as $row) {
                         echo '<option value="'.$row['id'].'">'.$row['name'].'</option>"';
                             }
                         ?>
             </select>
-            <span class="error" id="manError"></span>
-        </div>
-        <div class="form-group">
-            <label for="InputDeliv">Delivery*</label>
-            <select class="form-control" id="InputDeliv" name="InputDeliv">
-                <option value=""></option>
-                        <?php  
-                         $publish = $pdo->query('SELECT id, name FROM delivery');
-                        foreach ($publish as $row) {
-                        echo '<option value="'.$row['id'].'">'.$row['name'].'</option>"';
-                            }
-                        ?>
-            </select>
-            <span class="error" id="delivError"></span>
-        </div>
+            <span class="error" id="productError"></span>
+        </div>  
       </div>   
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -197,7 +162,7 @@ require_once 'database.php';
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete product</h5>
+        <h5 class="modal-title" id="deleteModalLabel">Delete product from category</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="del.php" method="post" name="reserve">
@@ -213,6 +178,8 @@ require_once 'database.php';
     </div>
   </div>
 </div>
+    
+  
 
 <!-- Script delete -->
 <script>
@@ -220,25 +187,31 @@ require_once 'database.php';
     function Id(btn)
     {
         iden = btn.id;
-        text = "Are you sure you want to delete product with id  "+iden+"?";
+        text = "Are you sure you want to delete from category product with id  "+iden+"?";
         document.getElementById("bookdel").innerHTML = text;
     }
 
     function Del()
-        { 
-            let base = "delAdminProducts.php?id=";
+        {
+            let base = "delAdminAssign.php?id=";
             let urldel = base + iden;
         $.ajax({
-           url: urldel,
-            method: 'POST'
+          url: urldel,
+          method: 'POST',
+          data: {
+                  CategoryId: $('#iden').val()            
+                }
         }).done(function() {
-            $("#deleteModal").modal('hide'); 
+            $("#deleteModal").modal('hide');
             $('#productsData').html('<tr>\n' +
           '<td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>\n' +
           '</tr>');
             $.ajax({
-                url: "getAdminProducts.php",
-                method: 'POST'
+                url: "getAdminAsigned.php",
+                method: 'POST',
+                data: {
+                  id: $('#iden').val()            
+                }
             }).done(function( data ) {
                 $('#productsData').html(data);
                 $('td').css( 'padding-bottom', "1rem" );
@@ -248,11 +221,16 @@ require_once 'database.php';
             });
         });
             }
-  </script> 
+
+
+</script>
+
+
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="AdminProductJS.js"></script>
+    <script type="text/javascript" src="AdminAsignedJS.js"></script>
 </body>
 </html>   
