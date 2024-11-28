@@ -28,50 +28,9 @@ require_once 'database.php';
 
 <body>
   <div class="main">
-    <!--menu-->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(23, 23, 23, 0.6)">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.php" center>
-          <img
-            src="https://img.freepik.com/premium-zdjecie/kapibara-hydrochoerus-hydrochaeris-najwiekszy-zywy-gryzon-na-swiecie_45756-348.jpg?w=740"
-            alt="" width="70" height="54">Galerianka</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
-          aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-center" id="navbarSupportedContent1">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="Fundations.php">Fundations</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link menu1 dropdown-toggle" id="Dropdown1" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <b>Shop</b>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="Dropdown1">
-                <li><a class="dropdown-item" href="Hunting.php">Hunting</a></li>
-                <li><a class="dropdown-item" href="Tactical.php">Tactical</a></li>
-                <li><a class="dropdown-item" href="BigKnives.php">Big Knives</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="LogIn.php">
-                <span><i class="fa-solid fa-user" alt="User"></i></span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="BasketPge.php">
-                <span><i class="fa-solid fa-basket-shopping" alt="Basket"></i></span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <!-- Header -->
+    <?php include('Header.php'); ?>
+    
     <!--Separator-->
     <nav class="navbar navbar-expand blue-border d-none d-md-block">
       <div class="container-fluid">
@@ -92,26 +51,18 @@ require_once 'database.php';
           </div>
           
           <!-- Panel buttons -->
-          <button class="btn btn-success spacer panel-btn" id="product_btn"><a href="AdminProduct.php" id="product_manage">Produkty i kategorie</a></button> 
-          <button class="btn btn-success spacer panel-btn" id="client_btn"><a href="AdminClients.php"  id="client_manage">Klienci</a></button>
-          <button class="btn btn-success spacer panel-btn" id="order_btn"><a href="#"  id="order_manage">Zamówienia</a></button>
-          <button class="btn btn-success spacer panel-btn" id="shipping_btn"><a href="#"  id="shipping_manage">Dostawy</a></button>
-          <button class="btn btn-success spacer panel-btn" id="payment_btn"><a href="#"  id="payment_manage">Płatności</a></button>
-          <button class="btn btn-success spacer panel-btn" id="subpage_btn"><a href="#"  id="subpage_manage">Podstrony</a></button>
+          <button class="btn btn-success spacer panel-btn" id="product_btn"><a href="AdminProduct.php" id="product_manage">Products and categories</a></button>
+          <button class="btn btn-success spacer panel-btn" id="client_btn"><a href="AdminClients.php"  id="client_manage">Clients</a></button>
+          <button class="btn btn-success spacer panel-btn" id="order_btn"><a href="AdminOrders.php"  id="order_manage">Orders</a></button>
+          <button class="btn btn-success spacer panel-btn" id="shipping_btn"><a href="AdminDelivery.php"  id="shipping_manage">Delivery</a></button>
+          <button class="btn btn-success spacer panel-btn" id="payment_btn"><a href="AdminPayments.php"  id="payment_manage">Payments</a></button>
+          <!--<button class="btn btn-success spacer panel-btn" id="subpage_btn"><a href="#"  id="subpage_manage">Podstrony</a></button>-->
           
           <button class="btn btn-success "  id="log_out" style="margin-bottom: 1.5rem"><a id="log_out_ref">Logout</a></button>
         </div>
         </div>
         </div>
-        
 
-        
-       <!-- <div class="col-6 spacer" id="logedin" style="display: none">
-         <tbody id="roller">
-            <tr>
-                <td colspan="9"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></td>
-            </tr>
-         </tbody> -->
 
 
 
