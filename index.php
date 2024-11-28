@@ -2,7 +2,8 @@
 session_start();
 require_once 'database.php';
 ?>
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -19,7 +20,7 @@ require_once 'database.php';
 To do list:
  Add website icon
  Add page icon nex to name (the whole logo tbh)
- Fix main product slider 
+ Fix main product slider
  Chgange pictures?
  Fix heart product?
 
@@ -30,50 +31,9 @@ To do list:
 
 <body>
   <div class="main">
-    <!--menu-->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(23, 23, 23, 0.6)">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.php" center>
-          <img
-            src="https://img.freepik.com/premium-zdjecie/kapibara-hydrochoerus-hydrochaeris-najwiekszy-zywy-gryzon-na-swiecie_45756-348.jpg?w=740"
-            alt="" width="70" height="54">Galerianka</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
-          aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-center" id="navbarSupportedContent1">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="Fundations.php">Fundations</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link menu1 dropdown-toggle" id="Dropdown1" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <b>Shop</b>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="Dropdown1">
-                <li><a class="dropdown-item" href="Hunting.php">Hunting</a></li>
-                <li><a class="dropdown-item" href="Tactical.php">Tactical</a></li>
-                <li><a class="dropdown-item" href="BigKnives.php">Big Knives</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="LogIn.php">
-                <span><i class="fa-solid fa-user" alt="User"></i></span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="navbar-brand menu-icon" href="BasketPge.php">
-                <span><i class="fa-solid fa-basket-shopping alt="Basket"></i></span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <!-- Header -->
+    <?php include('Header.php'); ?>
+    
     <!--Separator-->
     <nav class="navbar navbar-expand blue-border d-none d-md-block">
       <div class="container-fluid">
@@ -86,13 +46,13 @@ To do list:
         <div class="collapse navbar-collapse" id="navbarSupportedContent2">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="Tactical.php">Tactical</a>
+              <a class="nav-link active link-border category-link" aria-current="page" href="Tactical.php">Tactical</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="Hunting.php">Hunting</a>
+              <a class="nav-link active link-border category-link" aria-current="page" href="Hunting.php">Hunting</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active link-border" aria-current="page" href="BigKnives.php">Big Knives</a>
+              <a class="nav-link active link-border category-link" aria-current="page" href="AllKnives.php">All Knives</a>
             </li>
           </ul>
       </div>
@@ -546,48 +506,9 @@ To do list:
     
   </div>
 
-  <footer>
-    <div class="container-fluid d-flex justify-content-between align-bottom" style="padding: .25rem; margin: .25rem;">
-      <div class="col-xs-1 col-md-3  footer-icon">
-        <hr style="width: 75%;">
-        <span><i class="green-border fa-brands fa-facebook"></i></span>
-        <span><i class="green-border fa-brands fa-twitter"></i></span>
-        <span><i class="green-border fa-brands fa-instagram"></i></span>
-        <span><i class="green-border fa-brands fa-youtube"></i></span>
-      </div>
-
-      <div class="col d-flex justify-content-end c-link" style="text-align: end;">
-        <div class="col-3 f-col">
-          <h5>Informtion</h5>
-          <hr>
-          <a href="#"><p>About Company</p></a>
-          <a href="#"><p>Contact</p></a>
-          <a href="#"><p>Usage remarks</p></a>
-        </div>
-        
-        <div class="col-3 f-col">
-          <h5>Order</h5>
-          <hr>
-          <a href="#"><p>Terms and Conditions</p></a>
-          <a href="#"><p>Shipping</p></a>
-          <a href="#"><p>Payments</p></a>
-          <a href="#"><p>Right to cancel</p></a>
-          <a href="#"><p>Privacy policy</p></a>
-        </div>
-
-        <div class="col-3 f-col" style="margin-right: 2rem;">
-          <h5>Contact</h5>
-          <hr>
-          <a href="#"><p><b>Galerianka</b></p></a>
-          <a href="#"><p>Veemkade 368</p></a>
-          <a href="#"><p>1019 HE Amsterdam, Netherlnds</p></a>
-          <a href="#"><p>+31 492 133 880</p></a>
-          <a href="#"><p>info@glerinka.com</p></a>
-        </div>
-        
-      </div>
-    </div>
-  </footer>
+    <footer>
+      <?php include('Footer.php'); ?>    
+    </footer>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
