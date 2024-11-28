@@ -5,82 +5,57 @@ $(document).ready(function(){
 });
 var admin_log;
 
-
-
-function account(){
-    var acc = document.getElementById("account");
-    var roll = document.getElementById("logedin");
-    var button = document.getElementById("acc_books");
-    var res = document.getElementById("res_books");
-    var out = document.getElementById("log_out");
-    roll.style.display = "none";
-    acc.style.display = "block";
-    button.style.display = "block";
-    res.style.display = "block";
-    out.style.display = "block";
-
-}      
-
-
-
 function Change(){
     $('#accountform').on('submit',function(e) {
       e.preventDefault();
           $.ajax({
-             url: "changeData.php",
+             url: "ChangeUserData.php",
               method: 'POST',
               data: {
-                InputName: $('#named').val(),
-                InputSur: $('#surname').val(),
-                InputAdres: $('#haddress').val(),
-                InputNumber: $('#doc').val(),  
-                InputPass: $('#password').val(),              
+                Email: $('#Email').val(),
+                FirstName: $('#FirstName').val(),
+                LastName: $('#LastName').val(),
+                City: $('#City').val(),
+                Code: $('#Postcode').val(),
+                House: $('#HouseNumber').val(),
+                Password: $('#Password').val(),
+                RepPassword: $('#RepPassword').val(),
+                ClientID: $('#Login').val()            
               },
               success: function (response)
                   {
                       
-                      if (response=="Zapisano")
-                      {
-                            var acc = document.getElementById("account");
-                            var button = document.getElementById("acc_books");
-                            var res = document.getElementById("res_books");
-                            var roll = document.getElementById("logedin");
-                            button.style.display = "none";
-                            res.style.display = "none";
-                            acc.style.display = "none";
-                            roll.style.display = "block";
-                            setTimeout(account, 1500);
-                            $('#nameError').html('');
-                            $('#surError').html('');
-                            $('#adrError').html('');
-                            $('#numberError').html('');
-                            $('#passError').html('');   
+                      if (response=="Edited")
+                      {  
+                        location.reload();
+                        alert("Saved changes");
                       }
                       else{
-                        if (response.match("1")){
-                         $('#nameError').html('Wymagane imie');
-                        }else{
-                         $('#nameError').html('');
-                        }
                         if (response.match("2")){
-                         $('#surError').html('Wymagane nazwisko');
+                         $('#EmailError').html('Wymagany email');
                         }else{
-                         $('#surError').html('');
+                         $('#EmailError').html('');
                         }
                         if (response.match("3")){
-                         $('#adrError').html('Wymagany adres');
+                         $('#FirstNameError').html('Wymagane imie');
                         }else{
-                         $('#adrError').html('');
+                         $('#FirstNameError').html('');
                         }
                         if (response.match("4")){
-                         $('#numberError').html('Wymagany numer dokumentu');
+                         $('#LastNameError').html('Wymagane nazwisko');
                         }else{
-                         $('#numberError').html('');
+                         $('#LastNameError').html('');
                         }
-                        if (response.match("5")){
-                         $('#passError').html('Wymagane hasło');
+                        
+                        if (response.match("8")){
+                         $('#PasswordError').html('Wymagane hasło');
                         }else{
-                         $('#passError').html('');
+                         $('#PasswordError').html('');
+                        }
+                        if (response.match("9")){
+                         $('#RepPasswordError').html('Wymagane hasło');
+                        }else{
+                         $('#RepPasswordError').html('');
                         }
                      }
                       
@@ -109,13 +84,5 @@ function Out(){
 function prev_loged(){
     e.preventDefault();
       window.location.href = "/UserPanel.php";                           
-    
-  //if (admin_log==1){
-    //    setTimeout(admin, 1500);
-        
-    //}
-//    else{
-
-  //  }
 
 }
