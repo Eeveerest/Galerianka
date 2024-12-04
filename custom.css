@@ -206,6 +206,23 @@ hr {
   margin-top: 1rem;
 }
 
+.order-1 {
+  width: 29%;
+}
+
+.carousel-caption {
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+}
+
+.carousel-item {
+  display: none;
+}
+
+.carousel-item.active {
+  display: flex;
+}
+
 /** Font size **/
 .sizesm {
   font-size: 20px;
@@ -364,7 +381,7 @@ hr {
 .inner1 .carousel-item.active,
 .inner1 .carousel-item-next,
 .inner1 .carousel-item-prev {
-  display: flex;
+  display: grid;
 }
 
 /* medium and up screens */
@@ -388,12 +405,20 @@ hr {
 /** Carousel controls **/
 .prev-icon1 {
   position: absolute;
-  right: 80%;
+  right: 100%;
 }
 
 .next-icon1 {
   position: absolute;
-  left: 80%;
+  left: 100%;
+}
+
+.carousel-control-next {
+  width: 10%;
+}
+
+.carousel-control-prev {
+  width: 10%;
 }
 
 /** Custom link color **/
@@ -649,7 +674,13 @@ input:focus {
   padding: 0;
   cursor: pointer;
   overflow: hidden;
-  width: 84%;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 0.8rem;
+}
+
+.image_list li:first-of-type {
+  margin-top: 0.7rem;
 }
 
 .image_list li:last-child {
