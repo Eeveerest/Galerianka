@@ -1,19 +1,81 @@
-let items = document.querySelectorAll('.carousel1 .item1')
+$(document).ready(function(){
 
-items.forEach((el) => {
-    const minPerSlide = 4
-    let next = el.nextElementSibling
-    for (var i=1; i<minPerSlide; i++) {
-        if (!next) {
-            // wrap carousel by using first child
-        	next = items[0]
-      	}
-        let cloneChild = next.cloneNode(true)
-        el.appendChild(cloneChild.children[0])
-        next = next.nextElementSibling
-    }
-})
+    getNewest();
+    getBest();
 
-$("#heart").click(function() {
-  $(this).toggleClass("fa-heart fa-heart-o");
 });
+
+function getNewest(){
+    $.ajax({
+        url: "getProductNewest.php",
+        method: 'POST'
+    }).done(function( data ) {
+        $('#Newest').html(data);
+        
+    })
+}
+
+function getBest(){
+    $.ajax({
+        url: "getProductBestSell.php",
+        method: 'POST'
+    }).done(function( data ) {
+        $('#Best').html(data);
+        
+    })
+}
+
+function Favorite(id) {
+  let elem = document.getElementById("heart_product_"+id);
+  let elem2 = document.getElementById("heart_product_two_"+id);
+  let isMainPresent = elem.classList.contains("fa-heart-o");
+  if (elem2){
+  let isMainPresent2 = elem2.classList.contains("fa-heart-o");
+   }
+  if (isMainPresent) {
+    elem.className = "fa-solid fa-heart";
+    $.ajax({
+      url: "addProductrFavorites.php",
+      method: 'POST',
+      data: {
+        id: id
+      },
+    }).done(function( data ) {           
+    })
+      }
+  else {
+    elem.className = "fa fa-heart-o";
+    $.ajax({
+      url: "delProductFavorites.php",
+      method: 'POST',
+      data: {
+        id: id
+      },
+    }).done(function( data ) {          
+    })
+      }
+    if (isMainPresent2) {
+    elem2.className = "fa-solid fa-heart";
+    $.ajax({
+      url: "addProductrFavorites.php",
+      method: 'POST',
+      data: {
+        id: id
+      },
+    }).done(function( data ) {           
+    })
+      }
+  else {
+    elem2.className = "fa fa-heart-o";
+    $.ajax({
+      url: "delProductFavorites.php",
+      method: 'POST',
+      data: {
+        id: id
+      },
+    }).done(function( data ) {          
+    })
+      }
+}
+
+
