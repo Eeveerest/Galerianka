@@ -68,7 +68,7 @@ $html = '';
     
   }
 
-     echo '</div>';        
+     echo '</div></div>';        
      echo '<a class="carousel-control-prev bg-transparent w-aut" href="#BestsellerCarousel" role="button" data-bs-slide="prev">';
      echo '<span class="carousel-control-prev-icon prev-icon1" aria-hidden="true"></span></a>';         
      echo '<a class="carousel-control-next bg-transparent w-aut" href="#BestsellerCarousel" role="button" data-bs-slide="next">';
